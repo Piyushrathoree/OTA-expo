@@ -1,0 +1,55 @@
+import type { en } from "./en";
+
+export const ja: Omit<typeof en, "events"> & {
+  events: Omit<typeof en.events, "booked_one">;
+} = {
+  tabs: { events: "イベント", tickets: "マイチケット", scan: "スキャン" },
+  events: {
+    title: "東京の公演",
+    subtitle: "1回の予約で最大4枚まで。",
+    perTicket: " / 枚",
+    left: "残り{{count}}枚",
+    soldOut: "完売",
+    book: "{{count}}枚予約 · {{total}}",
+    booked_other: "{{count}}枚予約しました · {{name}}",
+    fewer: "枚数を減らす",
+    more: "枚数を増やす",
+    emptyTitle: "予定されている公演はありません",
+    emptyBody: "また後でご確認ください。",
+  },
+  tickets: {
+    title: "マイチケット",
+    subtitle: "入場時にQRコードを提示してください。下に引くと更新します。",
+    admit: "入場券",
+    ready: "スキャン可能",
+    used: "使用済み",
+    stamp: "入場済",
+    emptyTitle: "チケットはまだありません",
+    emptyBody: "イベントから予約するとここに表示されます。",
+  },
+  errors: {
+    title: "エラーが発生しました",
+    retry: "再試行",
+    network: "サーバーに接続できません。通信環境をご確認ください。",
+    conflict: "残りのチケットが足りません。",
+    notFound: "このイベントは存在しません。",
+    user: "ユーザーが見つかりません。",
+    generic: "エラーが発生しました。もう一度お試しください。",
+  },
+  scan: {
+    hint: "チケットのQRコードにカメラを向けてください",
+    ok: "入場OK",
+    used: "使用済みのチケットです",
+    usedAt: "初回スキャン {{time}}",
+    unknown: "チケットが見つかりません",
+    own: "ご自身のチケットはスキャンできません",
+    ownHint: "他の人にスキャンしてもらってください",
+    next: "タップして次のチケットをスキャン",
+    permissionTitle: "カメラへのアクセスが必要です",
+    permissionBody: "ゲートでチケットのQRコードを読み取るため、カメラを許可してください。",
+    allow: "カメラを許可",
+    openSettings: "設定を開く",
+  },
+  user: { switch: "ユーザーを切り替え", switched: "{{name}}として操作中" },
+  language: { switchTo: "EN", label: "英語に切り替え" },
+};

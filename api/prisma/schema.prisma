@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  name    String
+  tickets Ticket[]
+}
+
+model Event {
+  id           Int      @id @default(autoincrement())
+  name         String
+  venue        String
+  date         DateTime
+  price        Int
+  totalTickets Int
+  ticketsLeft  Int
+  tickets      Ticket[]
+}
+
+model Ticket {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  checkedInAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  userId  Int
+  eventId Int
+  user    User  @relation(fields: [userId], references: [id])
+  event   Event @relation(fields: [eventId], references: [id])
+
+  @@index([userId])
+  @@index([eventId])
+}
