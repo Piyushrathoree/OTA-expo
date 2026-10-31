@@ -10,11 +10,6 @@ const daysFromNow = (days: number) =>
   new Date(Date.now() + days * 24 * 60 * 60 * 1000);
 
 async function main() {
-  if (process.argv.includes("--if-empty") && (await prisma.user.count()) > 0) {
-    console.log("Database already has data, skipping seed");
-    return;
-  }
-
   await prisma.ticket.deleteMany();
   await prisma.event.deleteMany();
   await prisma.user.deleteMany();
